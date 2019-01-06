@@ -27,8 +27,12 @@ import com.szh.commonBase.util.MyUtil;
 import com.szh.commonBase.util.ProgressDialogUtil;
 import com.szh.commonBase.util.SelectPhotoTools;
 import com.szh.commonBase.util.SpfUtil;
+import com.zln.lovecottage.MyApplication;
 import com.zln.lovecottage.R;
+import com.zln.lovecottage.item.UserItem;
 import com.zln.lovecottage.ui.activity.AboutUsActivity;
+import com.zln.lovecottage.ui.activity.LoginActivity;
+import com.zln.lovecottage.ui.activity.UserInfoActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,7 +87,7 @@ public class UserCenterFragment extends BaseFragment {
                         e.printStackTrace();
                         MyUtil.MyLogE(TAG,e.toString());
                     }
-//                    BaseApplication.getAPPInstance().getmUser().setHeadUrl(headUrl);
+                    ((MyApplication)BaseApplication.getAPPInstance()).getUser().setHeadUrl(headUrl);
                     updateHeadUrl();
                 }
             }
@@ -121,7 +125,7 @@ public class UserCenterFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if(SpfUtil.getBoolean(Constant.IS_LOGIN,false)){
-//                    jumpToNext(UserInfoActivity.class);
+                    jumpToNext(UserInfoActivity.class);
                 }
             }
         });
@@ -129,15 +133,15 @@ public class UserCenterFragment extends BaseFragment {
         ful_tv_login_and_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                jumpToNext(LoginActivity.class);
+                jumpToNext(LoginActivity.class);
             }
         });
         asl_ll_replaceuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SpfUtil.clearAll();
-//                BaseApplication.getAPPInstance().setmUser(null);
-//                jumpToNext(LoginActivity.class);
+                ((MyApplication)BaseApplication.getAPPInstance()).setUser(null);
+                jumpToNext(LoginActivity.class);
             }
         });
 
@@ -185,28 +189,28 @@ public class UserCenterFragment extends BaseFragment {
         ful_tv_login_and_regist.setVisibility(View.VISIBLE);
     }
 
-//    private void updateData(UserItem user) {
-//        ful_tv_nickname.setText(user.getNickName());
-//        if (!TextUtils.isEmpty(user.getHeadUrl())) {
-//            Glide.with(context)
-//                    .load(Constant.DEFAULT_URL + Constant.IMAGE_URL + user.getHeadUrl())
-//                    .placeholder(R.drawable.img_user_default)
-//                    .into(ful_iv_head);
-//        }
-//        ful_tv_nickname.setVisibility(View.VISIBLE);
-//        ful_tv_score.setVisibility(View.VISIBLE);
+    private void updateData(UserItem user) {
+        ful_tv_nickname.setText(user.getNickName());
+        if (!TextUtils.isEmpty(user.getHeadUrl())) {
+            Glide.with(context)
+                    .load(Constant.DEFAULT_URL + Constant.IMAGE_URL + user.getHeadUrl())
+                    .placeholder(R.drawable.img_user_default)
+                    .into(ful_iv_head);
+        }
+        ful_tv_nickname.setVisibility(View.VISIBLE);
+        ful_tv_score.setVisibility(View.VISIBLE);
 //        ful_tv_score.setText(user.getScore() + "");
-//        ful_tv_login_and_regist.setVisibility(View.GONE);
-//    }
+        ful_tv_login_and_regist.setVisibility(View.GONE);
+    }
 
     private void setSelfData() {
-//        ProgressDialogUtil.showProgressDialog(context, true);
-//        if (BaseApplication.getAPPInstance().getmUser() != null) {
-//            UserItem mUser = BaseApplication.getAPPInstance().getmUser();
-//            updateData(mUser);
-//            ProgressDialogUtil.dismissProgressdialog();
-//        }
-//        getUserData();
+        ProgressDialogUtil.showProgressDialog(context, true);
+        if (BaseApplication.getAPPInstance().getUser() != null) {
+            UserItem mUser = (UserItem) BaseApplication.getAPPInstance().getUser();
+            updateData(mUser);
+            ProgressDialogUtil.dismissProgressdialog();
+        }
+        getUserData();
     }
 
     /**
