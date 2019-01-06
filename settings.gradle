@@ -1,0 +1,3 @@
+include ':app'
+include ':CommonBase'
+project (':CommonBase').projectDir = new File('../CommonBase')
