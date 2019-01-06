@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/app_logo" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_toRightOf="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:text="掌上问卷"
+            android:textColor="#235EAB"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/logo"
+            android:layout_below="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="版本V1.0.0(最新)"
+            android:textColor="#235EAB"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="掌上问卷是一个专业的问卷调查平台。掌上问卷不限题目数,不限答卷数;支持分类统计与交叉分析,免费下载报告和原始答卷;完美支持手机填写;超过4亿人在掌上问卷注册!"/>
+
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Copyright @ 2017 江艺舟 版权所有"/>
+
+</LinearLayout>
